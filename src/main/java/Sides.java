@@ -28,19 +28,24 @@ public class Sides {
 
         //makes sure they pick a correct size option
         while (!drinkSize.equals("S") && !drinkSize.equals("M") && !drinkSize.equals("L")) {
-            System.out.println("Need to choose (S, M, L) try again.");
+            System.out.println("Need to choose (S, M, L) please try again.");
             drinkSize = scanner.nextLine().trim().toUpperCase();
         }
 
         //prompts drink options
         System.out.println("Select drink type (Water, Pepsi, Sprite, Tea, Coke)");
-        drinkFlavor = scanner.nextLine().trim();
+        drinkFlavor = scanner.nextLine().trim().toUpperCase();
+
+        while (!drinkFlavor.equalsIgnoreCase("Water") && !drinkFlavor.equalsIgnoreCase("Pepsi") && !drinkFlavor.equalsIgnoreCase("Sprite") && !drinkFlavor.equalsIgnoreCase("Tea") && !drinkFlavor.equalsIgnoreCase("Coke")) {
+            System.out.println("Need to choose (Water, Pepsi, Sprite, Tea, Coke) please try again.");
+            drinkFlavor = scanner.nextLine().trim().toUpperCase();
+        }
     }
 
     public String drinksToString() {
         return "\n         Drink Added          \n" +
                 "====================================\n" +
-                "Drinks: " + drinkFlavor +  " Size: " + " (" + drinkSize + ")";
+                drinkFlavor +  " Size:" + "("+ drinkSize +")";
     }
 
     public String drinkDisplay() {
@@ -48,7 +53,7 @@ public class Sides {
         if (drinkSize == null || drinkFlavor == null) {
             return "";
         }
-        return "Drinks: " + drinkFlavor + " (" + drinkSize + ")";
+        return drinkFlavor + " (" + drinkSize + ")";
     }
 
 

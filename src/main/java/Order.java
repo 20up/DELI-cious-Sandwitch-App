@@ -40,7 +40,7 @@ public class Order {
                     Sides drinks = new Sides();
                     drinks.addDrinks(SCANNER);                   //takes you to "addDrink" method in "Sides" class
                     System.out.println(drinks.drinksToString()); //prints the drink you got
-                    DRINKS.add(drinks);                          //adds the drink to "drinkList" list
+                    DRINKS.add(drinks);                          //adds the drink to "DRINK" list
                     break;
                 case "3":
                     Sides chips = new Sides();
@@ -74,7 +74,7 @@ public class Order {
                              Sandwiches:
                 ====================================""");
 
-        //loops "sandwiches" list and displays it
+        //loops "SANDWICH" list and displays it
         for (Sandwich s : SANDWICH) {
             s.display();
         }
@@ -82,7 +82,7 @@ public class Order {
                               Drinks:
                 ====================================""");
 
-        //loops "drinkList" and puts it in "d" and displays it
+        //loops "DRINK" and puts it in "d" and displays it
         for (Sides d : DRINKS) {
             System.out.println(d.drinkDisplay());
         }
@@ -106,7 +106,7 @@ public class Order {
         for (Sandwich s : SANDWICH) {
             total += s.calculatePrice();
         }
-        //loops drinkList into "d" and uses "sideTotal" method to get total
+        //loops DRINKS into "d" and uses "sideTotal" method to get total
         for (Sides d : DRINKS) {
             total += d.sideTotal();
         }
