@@ -7,10 +7,9 @@ public class Order {
 
     private List<Sandwich> sandwiches = new ArrayList<>();
     private List<Sides> drinksList = new ArrayList<>();
-    private List<String> chips = new ArrayList<>();
+    private List<Sides> chipsList = new ArrayList<>();
 
     public void Menu() {
-
         //while loop
         boolean choice = true;
         while (choice) {
@@ -20,7 +19,7 @@ public class Order {
                     ====================================
                      1) Add Sandwich 🥪
                      2) Add Drink 🥤
-                     3) Add Chips 🥔
+                     3) Add Chips (1.50$) 🥔
                      4) Checkout
                      0) Cancel order
                      ===================================""");
@@ -39,12 +38,16 @@ public class Order {
                     break;
                 case "2":
                     Sides drinks = new Sides();
-                    drinks.addDrinks(scanner);             //takes you to "addDrink" method in "Sides" class
-                    System.out.println(drinks.toString()); //prints the drink you got
-                    drinksList.add(drinks);                //adds the drink to "drinkList" list
+                    drinks.addDrinks(scanner);                   //takes you to "addDrink" method in "Sides" class
+                    System.out.println(drinks.drinksToString()); //prints the drink you got
+                    drinksList.add(drinks);                      //adds the drink to "drinkList" list
                     break;
                 case "3":
-//                    chip();
+                    Sides chips = new Sides();
+                    chips.addChips(scanner);
+                    System.out.println(chips.chipsToString());
+                    chipsList.add(chips);
+                    break;
                 case "4":
                     checkout();
                     System.out.println("1) Confirm Order/ else Cancel");
@@ -57,7 +60,8 @@ public class Order {
                     }
                     break;
                 case "0":
-//                    cancel();
+                    System.out.println("Order Canceled");
+                    return;
                 default: // defaults to "Invalid Input"
                     System.out.println("Invalid Input");
             }
@@ -74,12 +78,19 @@ public class Order {
             s.display();
         }
         System.out.println("""
-                              Sides:
+                              Drinks:
                 ====================================""");
 
         //loops "drinkList" and puts it in "d" and displays it
         for (Sides d : drinksList) {
             System.out.println(d.drinkDisplay());
+        }
+        System.out.println("""
+                              Chips:
+                ====================================
+                """);
+        for(Sides c : chipsList){
+            System.out.println(c.chipDisplay());
         }
         System.out.println("""
                 ====================================""");
@@ -97,6 +108,10 @@ public class Order {
         //loops drinkList into "d" and uses "sideTotal" method to get total
         for (Sides d : drinksList) {
             total += d.sideTotal();
+        }
+
+        for(Sides c : chipsList){
+            total += c.sideTotal();
         }
         return total;
     }

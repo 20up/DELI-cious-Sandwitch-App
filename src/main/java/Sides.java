@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class Sides {
     private String drinkSize;
     private String drinkFlavor;
+    private String chipType;
+
 
 
     public static double drinkPrice(String size) {
@@ -17,7 +19,11 @@ public class Sides {
 
     public void addDrinks(Scanner scanner) {
         //prompts for size
-        System.out.println("Select drink size (S, M, L).");
+        System.out.println("""
+                \nSelect drink size (S, M, L).
+                Small - 2.00$
+                Medium - 2.50$
+                Large - 3.00$""");
         drinkSize = scanner.nextLine().trim().toUpperCase();
 
         //makes sure they pick a correct size option
@@ -31,10 +37,10 @@ public class Sides {
         drinkFlavor = scanner.nextLine().trim();
     }
 
-    public String toString() {
+    public String drinksToString() {
         return "\n         Drink Added          \n" +
                 "====================================\n" +
-                "Drinks: " + drinkFlavor +  "Size: " + " (" + drinkSize + ")";
+                "Drinks: " + drinkFlavor +  " Size: " + " (" + drinkSize + ")";
     }
 
     public String drinkDisplay() {
@@ -46,10 +52,38 @@ public class Sides {
     }
 
 
+
+
+
+    public void addChips(Scanner scanner){
+        System.out.println("\nSelect chip option (Classic, BBQ, Salt & Vinegar, Flaming Hot)");
+        chipType = scanner.nextLine().trim();
+    }
+
+    public String chipsToString(){
+        return "\n         Chips Added         \n" +
+                "====================================\n" +
+                "Chips: " + chipType;
+    }
+
+    public String chipDisplay(){
+        if(chipType == null){
+            return "";
+        }
+        return "Chips" + chipType;
+    }
+
+
+
+
+
     public double sideTotal() {
         double total = 0.0;
         if (drinkSize != null) {
             total += drinkPrice(drinkSize);
+        }
+        if(chipType != null){
+            total += 1.5;
         }
         return total;
     }
