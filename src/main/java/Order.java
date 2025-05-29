@@ -41,7 +41,16 @@ public class Order {
                 case "3":
 //                    chip();
                 case "4":
-//                    checkout();
+                    checkout();
+                    System.out.println("1) Confirm Order/ else Cancel");
+                    String confirm = scanner.nextLine().trim();
+                    if (confirm.equals("1")) {
+                        System.out.println("Order Is Confirmed");
+                    } else {
+                        System.out.println("Order Canceled");
+                        return;
+                    }
+                    break;
                 case "0":
 //                    cancel();
                 default: // defaults to "Invalid Input"
@@ -50,7 +59,23 @@ public class Order {
         }
     }
 
+    public void checkout() {
+        System.out.println("\nYour Order:");
 
+        //loops and "sandwiches" list and displays it
+        for (Sandwich s : sandwiches) {
+            s.display();
+        }
+        System.out.println("Total: $" + calculateTotal());
+    }
+
+    private double calculateTotal() {
+        double total = 0.0;
+
+        //loops and calc the sandwich total
+        for (Sandwich s : sandwiches) total += s.calculatePrice();
+        return total;
+    }
 
 
 }

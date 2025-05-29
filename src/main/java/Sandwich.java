@@ -48,8 +48,6 @@ public class Sandwich {
 
     }
 
-
-
     public String toString() {
         return "\nSandwich Added\n" +
                 "Bread type: " + bread + " size: " + size + "\" " + "\n" +
@@ -60,5 +58,60 @@ public class Sandwich {
                 "Sauces: " + sauces;
     }
 
+    public void display() {
+        System.out.println(size + "\" " + bread + "sandwich" + (toasted ? "(Toasted )" : ""));
+        System.out.println("Meats: " + meats);
+        System.out.println("Cheeses: " + cheeses);
+        System.out.println("Toppings: " + toppings);
+        System.out.println("Sauces " + sauces);
+    }
+
+    public double calculatePrice() {
+        double base = switch (size) {
+            case 4 -> 5.5;
+            case 8 -> 7.0;
+            case 12 -> 8.5;
+            default -> 0.0;
+        };
+        double meatCost = 0.0;
+        if (!meats.isEmpty()) {
+            meatCost += switch (size) {
+                case 4 -> 1.0;
+                case 8 -> 2.0;
+                case 12 -> 3.0;
+                default -> 0.0;
+            };
+            int extraMeat = meats.size() - 1;
+            if (extraMeat > 0) {
+                meatCost += extraMeat * switch (size) {
+                    case 4 -> 0.5;
+                    case 8 -> 1.0;
+                    case 12 -> 1.5;
+                    default -> 0.0;
+                };
+            }
+        }
+        double cheeseCost = 0.0;
+        if (!cheeses.isEmpty()) {
+            cheeseCost += switch (size) {
+                case 4 -> 0.75;
+                case 8 -> 1.50;
+                case 12 -> 2.25;
+                default -> 0.0;
+            };
+        }
+
+        int extraCheese = cheeses.size() - 1;
+        if (extraCheese > 0) {
+            cheeseCost += extraCheese * switch (size) {
+                case 4 -> 0.3;
+                case 8 -> 0.6;
+                case 12 -> 0.9;
+                default -> 0.0;
+            };
+        }
+        return base + meatCost + cheeseCost;
+    }
 
 }
+
