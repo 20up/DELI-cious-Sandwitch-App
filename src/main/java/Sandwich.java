@@ -60,37 +60,37 @@ public class Sandwich {
 
 
     public void display() {
-        System.out.println("Bread type: " + bread + " size: " + size);
+        System.out.println("(Bread type: " + bread + " size: " + size);
         System.out.println("Toasted " + toasted);
         System.out.println("Meats: " + meats);
         System.out.println("Cheeses: " + cheeses);
         System.out.println("Toppings: " + toppings);
-        System.out.println("Sauces " + sauces);
+        System.out.println("Sauces " + sauces + ") \n");
     }
 
 
     public double calculatePrice() {
         double base = switch (size) {
-            case 4 -> 5.5;
-            case 8 -> 7.0;
-            case 12 -> 8.5;
-            default -> 0.0;
+            case 4 -> 5.50;
+            case 8 -> 7.00;
+            case 12 -> 8.50;
+            default -> 0.00;
         };
         double meatCost = 0.0;
         if (!meats.isEmpty()) {
             meatCost += switch (size) {
-                case 4 -> 1.0;
-                case 8 -> 2.0;
-                case 12 -> 3.0;
-                default -> 0.0;
+                case 4 -> 1.00;
+                case 8 -> 2.00;
+                case 12 -> 3.00;
+                default -> 0.00;
             };
             int extraMeat = meats.size() - 1;
             if (extraMeat > 0) {
                 meatCost += extraMeat * switch (size) {
-                    case 4 -> 0.5;
-                    case 8 -> 1.0;
-                    case 12 -> 1.5;
-                    default -> 0.0;
+                    case 4 -> 0.50;
+                    case 8 -> 1.00;
+                    case 12 -> 1.50;
+                    default -> 0.00;
                 };
             }
         }
@@ -100,17 +100,17 @@ public class Sandwich {
                 case 4 -> 0.75;
                 case 8 -> 1.50;
                 case 12 -> 2.25;
-                default -> 0.0;
+                default -> 0.00;
             };
         }
 
         int extraCheese = cheeses.size() - 1;
         if (extraCheese > 0) {
             cheeseCost += extraCheese * switch (size) {
-                case 4 -> 0.3;
-                case 8 -> 0.6;
-                case 12 -> 0.9;
-                default -> 0.0;
+                case 4 -> 0.30;
+                case 8 -> 0.60;
+                case 12 -> 0.90;
+                default -> 0.00;
             };
         }
         return base + meatCost + cheeseCost;

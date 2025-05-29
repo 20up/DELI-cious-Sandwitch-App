@@ -3,11 +3,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Order {
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner SCANNER = new Scanner(System.in);
+    private final List<Sandwich> SANDWICH = new ArrayList<>();
+    private final List<Sides> DRINKS = new ArrayList<>();
+    private final List<Sides> CHIPS = new ArrayList<>();
 
-    private List<Sandwich> sandwiches = new ArrayList<>();
-    private List<Sides> drinksList = new ArrayList<>();
-    private List<Sides> chipsList = new ArrayList<>();
 
     public void Menu() {
         //while loop
@@ -25,7 +25,7 @@ public class Order {
                      ===================================""");
             // user input
             System.out.print("Enter: ");
-            String enter = scanner.nextLine().trim();
+            String enter = SCANNER.nextLine().trim();
             System.out.println("\n");
 
             //switch and case for the choices
@@ -34,24 +34,24 @@ public class Order {
                     Sandwich sandwich = new Sandwich();
                     sandwich.building();                     //takes you to "building" method in "Sandwich" class
                     System.out.println(sandwich.toString()); //prints the sandwich you made
-                    sandwiches.add(sandwich);                // adds sandwiches made to "sandwiches" List
+                    SANDWICH.add(sandwich);                  // adds sandwiches made to "sandwiches" List
                     break;
                 case "2":
                     Sides drinks = new Sides();
-                    drinks.addDrinks(scanner);                   //takes you to "addDrink" method in "Sides" class
+                    drinks.addDrinks(SCANNER);                   //takes you to "addDrink" method in "Sides" class
                     System.out.println(drinks.drinksToString()); //prints the drink you got
-                    drinksList.add(drinks);                      //adds the drink to "drinkList" list
+                    DRINKS.add(drinks);                          //adds the drink to "drinkList" list
                     break;
                 case "3":
                     Sides chips = new Sides();
-                    chips.addChips(scanner);
+                    chips.addChips(SCANNER);
                     System.out.println(chips.chipsToString());
-                    chipsList.add(chips);
+                    CHIPS.add(chips);
                     break;
                 case "4":
                     checkout();
                     System.out.println("1) Confirm Order/ else Cancel");
-                    String confirm = scanner.nextLine().trim();
+                    String confirm = SCANNER.nextLine().trim();
                     if (confirm.equals("1")) {
                         System.out.println("\nOrder Is Confirmed\n");
                     } else {
@@ -62,8 +62,8 @@ public class Order {
                 case "0":
                     System.out.println("Order Canceled");
                     return;
-                default: // defaults to "Invalid Input"
-                    System.out.println("Invalid Input");
+                default:
+                    System.out.println("Invalid Input");  // defaults to "Invalid Input"
             }
         }
     }
@@ -71,10 +71,11 @@ public class Order {
     public void checkout() {
         System.out.println("""
                 \n           Your Order:
+                             Sandwiches:
                 ====================================""");
 
         //loops "sandwiches" list and displays it
-        for (Sandwich s : sandwiches) {
+        for (Sandwich s : SANDWICH) {
             s.display();
         }
         System.out.println("""
@@ -82,14 +83,14 @@ public class Order {
                 ====================================""");
 
         //loops "drinkList" and puts it in "d" and displays it
-        for (Sides d : drinksList) {
+        for (Sides d : DRINKS) {
             System.out.println(d.drinkDisplay());
         }
         System.out.println("""
                               Chips:
                 ====================================
                 """);
-        for(Sides c : chipsList){
+        for(Sides c : CHIPS){
             System.out.println(c.chipDisplay());
         }
         System.out.println("""
@@ -102,15 +103,15 @@ public class Order {
         double total = 0.0;
 
         //loops and calc the sandwich total
-        for (Sandwich s : sandwiches) {
+        for (Sandwich s : SANDWICH) {
             total += s.calculatePrice();
         }
         //loops drinkList into "d" and uses "sideTotal" method to get total
-        for (Sides d : drinksList) {
+        for (Sides d : DRINKS) {
             total += d.sideTotal();
         }
 
-        for(Sides c : chipsList){
+        for(Sides c : CHIPS){
             total += c.sideTotal();
         }
         return total;

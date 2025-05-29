@@ -10,10 +10,10 @@ public class Sides {
     public static double drinkPrice(String size) {
         //size prices
         return switch (size.toUpperCase()) {
-            case "S" -> 2.0;
-            case "M" -> 2.5;
-            case "L" -> 3.0;
-            default -> 0.0;
+            case "S" -> 2.00;
+            case "M" -> 2.50;
+            case "L" -> 3.00;
+            default -> 0.00;
         };
     }
 
@@ -70,7 +70,7 @@ public class Sides {
         if(chipType == null){
             return "";
         }
-        return "Chips" + chipType;
+        return "Chips " + chipType;
     }
 
 
@@ -78,12 +78,12 @@ public class Sides {
 
 
     public double sideTotal() {
-        double total = 0.0;
+        double total = 0.00;
         if (drinkSize != null) {
             total += drinkPrice(drinkSize);
         }
         if(chipType != null){
-            total += 1.5;
+            total += 1.50;
         }
         return total;
     }
