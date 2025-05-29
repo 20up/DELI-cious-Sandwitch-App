@@ -10,11 +10,12 @@ public class OrderScreen {
         while (choice) {
             //home screen
             System.out.println(""" 
-                             Home
+                                    Home
+                    ====================================
                     🥪Welcome to DelI-cious🥪
                     1) New Order
                     0) Exit
-                    """);
+                    ====================================""");
             System.out.print("Enter: ");
             String enter = scanner.nextLine().trim(); // input of what the user wants to do
             //switch for the 2 choices and default is "invalid input"

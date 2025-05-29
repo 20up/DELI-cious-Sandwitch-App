@@ -6,7 +6,7 @@ public class Order {
     private Scanner scanner = new Scanner(System.in);
 
     private List<Sandwich> sandwiches = new ArrayList<>();
-    private List<String> drinks = new ArrayList<>();
+    private List<Sides> drinksList = new ArrayList<>();
     private List<String> chips = new ArrayList<>();
 
     public void Menu() {
@@ -16,13 +16,14 @@ public class Order {
         while (choice) {
 
             System.out.println("""
-                    \n      Menu
+                    \n               Menu:
+                    ====================================
                      1) Add Sandwich 🥪
                      2) Add Drink 🥤
                      3) Add Chips 🥔
                      4) Checkout
                      0) Cancel order
-                    """);
+                     ===================================""");
             // user input
             System.out.print("Enter: ");
             String enter = scanner.nextLine().trim();
@@ -32,12 +33,16 @@ public class Order {
             switch (enter) {
                 case "1":
                     Sandwich sandwich = new Sandwich();
-                    sandwich.building(); //takes you to "building" method in "Sandwich" class
+                    sandwich.building();                     //takes you to "building" method in "Sandwich" class
                     System.out.println(sandwich.toString()); //prints the sandwich you made
-                    sandwiches.add(sandwich); // added sandwiches made to "sandwiches" List
+                    sandwiches.add(sandwich);                // adds sandwiches made to "sandwiches" List
                     break;
                 case "2":
-//                    drink();
+                    Sides drinks = new Sides();
+                    drinks.addDrinks(scanner);             //takes you to "addDrink" method in "Sides" class
+                    System.out.println(drinks.toString()); //prints the drink you got
+                    drinksList.add(drinks);                //adds the drink to "drinkList" list
+                    break;
                 case "3":
 //                    chip();
                 case "4":
@@ -45,9 +50,9 @@ public class Order {
                     System.out.println("1) Confirm Order/ else Cancel");
                     String confirm = scanner.nextLine().trim();
                     if (confirm.equals("1")) {
-                        System.out.println("Order Is Confirmed");
+                        System.out.println("\nOrder Is Confirmed\n");
                     } else {
-                        System.out.println("Order Canceled");
+                        System.out.println("\nOrder Canceled\n");
                         return;
                     }
                     break;
@@ -60,20 +65,39 @@ public class Order {
     }
 
     public void checkout() {
-        System.out.println("\nYour Order:");
+        System.out.println("""
+                \n           Your Order:
+                ====================================""");
 
-        //loops and "sandwiches" list and displays it
+        //loops "sandwiches" list and displays it
         for (Sandwich s : sandwiches) {
             s.display();
         }
+        System.out.println("""
+                              Sides:
+                ====================================""");
+
+        //loops "drinkList" and puts it in "d" and displays it
+        for (Sides d : drinksList) {
+            System.out.println(d.drinkDisplay());
+        }
+        System.out.println("""
+                ====================================""");
         System.out.println("Total: $" + calculateTotal());
     }
+
 
     private double calculateTotal() {
         double total = 0.0;
 
         //loops and calc the sandwich total
-        for (Sandwich s : sandwiches) total += s.calculatePrice();
+        for (Sandwich s : sandwiches) {
+            total += s.calculatePrice();
+        }
+        //loops drinkList into "d" and uses "sideTotal" method to get total
+        for (Sides d : drinksList) {
+            total += d.sideTotal();
+        }
         return total;
     }
 

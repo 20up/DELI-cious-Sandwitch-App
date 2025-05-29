@@ -44,12 +44,12 @@ public class Sandwich {
                 System.out.println("\nRAN INTO A PROBLEM TRY AGAIN\n");
             }
         }
-
-
     }
 
+
     public String toString() {
-        return "\nSandwich Added\n" +
+        return "\n         Sandwich Added:          \n" +
+                "====================================\n" +
                 "Bread type: " + bread + " size: " + size + "\" " + "\n" +
                 "toasted: " + toasted + "\n" +
                 "Meats: " + meats + "\n" +
@@ -58,13 +58,16 @@ public class Sandwich {
                 "Sauces: " + sauces;
     }
 
+
     public void display() {
-        System.out.println(size + "\" " + bread + "sandwich" + (toasted ? "(Toasted )" : ""));
+        System.out.println("Bread type: " + bread + " size: " + size);
+        System.out.println("Toasted " + toasted);
         System.out.println("Meats: " + meats);
         System.out.println("Cheeses: " + cheeses);
         System.out.println("Toppings: " + toppings);
         System.out.println("Sauces " + sauces);
     }
+
 
     public double calculatePrice() {
         double base = switch (size) {
