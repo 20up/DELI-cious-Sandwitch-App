@@ -11,24 +11,31 @@ public class Order {
 
     public void Menu() {
 
+        //while loop
         boolean choice = true;
         while (choice) {
 
             System.out.println("""
                     \n      Menu
-                     1) Add Sandwich
-                     2) Add Drink
-                     3) Add Chips
+                     1) Add Sandwich 🥪
+                     2) Add Drink 🥤
+                     3) Add Chips 🥔
                      4) Checkout
                      0) Cancel order
                     """);
             // user input
             System.out.print("Enter: ");
             String enter = scanner.nextLine().trim();
+            System.out.println("\n");
 
+            //switch and case for the choices
             switch (enter) {
                 case "1":
-//                    sandwich();
+                    Sandwich sandwich = new Sandwich();
+                    sandwich.building(); //takes you to "building" method in "Sandwich" class
+                    System.out.println(sandwich.toString()); //prints the sandwich you made
+                    sandwiches.add(sandwich); // added sandwiches made to "sandwiches" List
+                    break;
                 case "2":
 //                    drink();
                 case "3":
@@ -37,11 +44,13 @@ public class Order {
 //                    checkout();
                 case "0":
 //                    cancel();
-                default:
+                default: // defaults to "Invalid Input"
                     System.out.println("Invalid Input");
             }
         }
     }
+
+
 
 
 }
