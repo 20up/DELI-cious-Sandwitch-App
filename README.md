@@ -27,6 +27,12 @@ DelI-cious/
 
 ---
 
+## Class Diagram
+
+![UML Class Diagram](images/classDiagram.png)
+
+---
+
 ## 💡 How to Run
 
 1. Compile all Java files:
