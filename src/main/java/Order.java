@@ -1,5 +1,12 @@
+import javax.imageio.IIOException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Order {
@@ -53,12 +60,12 @@ public class Order {
                     System.out.println("1) Confirm Order/ else Cancel");
                     String confirm = SCANNER.nextLine().trim();
                     if (confirm.equals("1")) {
-                        System.out.println("\nOrder Is Confirmed\n");
+                        saveReceipt();
                     } else {
                         System.out.println("\nOrder Canceled\n");
                         return;
                     }
-                    break;
+                    return;
                 case "0":
                     System.out.println("Order Canceled");
                     return;
@@ -71,7 +78,7 @@ public class Order {
     public void checkout() {
         System.out.println("""
                 \n           Your Order:
-                             Sandwiches:
+                           Sandwiches:
                 ====================================""");
 
         //loops "SANDWICH" list and displays it
@@ -88,19 +95,19 @@ public class Order {
         }
         System.out.println("""
                               Chips:
-                ====================================
-                """);
+                ====================================""");
         for(Sides c : CHIPS){
             System.out.println(c.chipDisplay());
         }
         System.out.println("""
                 ====================================""");
         System.out.println("Total: $" + calculateTotal());
+        System.out.println("====================================");
     }
 
 
     private double calculateTotal() {
-        double total = 0.0;
+        double total = 0.00;
 
         //loops and calc the sandwich total
         for (Sandwich s : SANDWICH) {
@@ -115,6 +122,25 @@ public class Order {
             total += c.sideTotal();
         }
         return total;
+    }
+
+    private void saveReceipt(){
+        String filename = "receipt/" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd-HHmmss")) + ".txt";
+        try(PrintWriter writer = new PrintWriter(new FileWriter(filename))){
+            for(Sandwich s : SANDWICH){
+                writer.println(s);
+            }
+            for(Sides d : DRINKS){
+                writer.println(d.drinksToString());
+            }
+            for(Sides c : CHIPS){
+                writer.println(c.chipsToString());
+            }
+            writer.println("Total: $" + calculateTotal());
+            System.out.println("\nReceipt Saved As " + filename +"\n");
+        }catch (IOException e){
+            System.out.println("Ran Into Problem Saving Receipt");
+        }
     }
 
 

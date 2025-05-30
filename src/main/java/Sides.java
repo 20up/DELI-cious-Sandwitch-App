@@ -6,7 +6,6 @@ public class Sides {
     private String chipType;
 
 
-
     public static double drinkPrice(String size) {
         //size prices
         return switch (size.toUpperCase()) {
@@ -45,7 +44,7 @@ public class Sides {
     public String drinksToString() {
         return "\n         Drink Added          \n" +
                 "====================================\n" +
-                drinkFlavor +  " Size:" + "("+ drinkSize +")";
+                "Size:" + "(" + drinkSize + ") " + drinkFlavor;
     }
 
     public String drinkDisplay() {
@@ -57,29 +56,28 @@ public class Sides {
     }
 
 
-
-
-
-    public void addChips(Scanner scanner){
+    public void addChips(Scanner scanner) {
         System.out.println("\nSelect chip option (Classic, BBQ, Salt & Vinegar, Flaming Hot)");
-        chipType = scanner.nextLine().trim();
+        chipType = scanner.nextLine().trim().toUpperCase();
+
+        while (!chipType.equalsIgnoreCase("Classic") && !chipType.equalsIgnoreCase("BBQ") && !chipType.equalsIgnoreCase("Salt & Vinegar") && !chipType.equalsIgnoreCase("Flaming Hot")) {
+            System.out.println("Need to choose (Classic, BBQ, Salt & Vinegar, Flaming Hot) please try again.");
+            chipType = scanner.nextLine().trim().toUpperCase();
+        }
     }
 
-    public String chipsToString(){
+    public String chipsToString() {
         return "\n         Chips Added         \n" +
                 "====================================\n" +
-                "Chips: " + chipType;
+                chipType;
     }
 
-    public String chipDisplay(){
-        if(chipType == null){
+    public String chipDisplay() {
+        if (chipType == null) {
             return "";
         }
-        return "Chips " + chipType;
+        return chipType;
     }
-
-
-
 
 
     public double sideTotal() {
@@ -87,7 +85,7 @@ public class Sides {
         if (drinkSize != null) {
             total += drinkPrice(drinkSize);
         }
-        if(chipType != null){
+        if (chipType != null) {
             total += 1.50;
         }
         return total;

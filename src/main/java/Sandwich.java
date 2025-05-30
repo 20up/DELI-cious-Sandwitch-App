@@ -41,7 +41,7 @@ public class Sandwich {
                 System.out.println("Add Toppings !PLEASE SPACE WITH COMMA!:(Lettuce, Pepper, Tomato, Onion, Jalapenos, Pickles, Cucumbers, Guac, Mushrooms)");
                 toppings = Arrays.asList(scanner.nextLine().split(","));
 
-                System.out.println("Add Sauces !PLEASE SPACE WITH COMMA!:(Mayo, Mustard, Ranch, Kechups, Thousand Island, Vinaigrette)");
+                System.out.println("Add Sauces !PLEASE SPACE WITH COMMA!:(Mayo, Mustard, Ranch, Ketchup, Thousand Island, Vinaigrette)");
                 sauces = Arrays.asList(scanner.nextLine().split(","));
 
                 System.out.println("Do you want it toasted:(Yes/Else NO)");
