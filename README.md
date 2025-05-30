@@ -51,7 +51,7 @@ java Main
 
 ## 📝 Notes
 
-* Receipts are saved in the `receipt/` folder. Make sure this folder exists or is created by the program.
+* Receipts are saved in the `receipt/` folder.
 * Inputs must follow instructions (e.g., comma-separated lists for sandwich ingredients).
 * Drinks and chips each have simple flat-rate costs defined in the `Sides` class.
 
