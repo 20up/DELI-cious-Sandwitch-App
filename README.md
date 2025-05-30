@@ -1,4 +1,4 @@
-# DelI-cious Sandwich Ordering App
+# DeLI-cious Sandwich Ordering App
 
 Welcome to **DelI-cious**, a Java-based console application that allows users to create custom sandwich orders, add sides like drinks and chips, and generate a receipt. This app demonstrates basic object-oriented programming, user input handling, file writing, and control structures in Java.
 
