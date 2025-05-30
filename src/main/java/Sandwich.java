@@ -20,14 +20,22 @@ public class Sandwich {
             try {
                 System.out.println("\nChoose one bread type:(White, Wheat, Rye, Wrap)");
                 bread = scanner.nextLine().trim();
+                while (!bread.equalsIgnoreCase("White") && !bread.equalsIgnoreCase("Wheat") && !bread.equalsIgnoreCase("Rye") && !bread.equalsIgnoreCase("Wrap")) {
+                    System.out.println("Need to choose (White, Wheat, Rye, Wrap) please try again.");
+                    bread = scanner.nextLine().trim().toUpperCase();
+                }
 
                 System.out.println("Choose one Bread Size:(4, 8, 12)");
                 size = Integer.parseInt(scanner.nextLine());
+                while (size != 4 && size != 8 && size != 12) {
+                    System.out.println("Need to choose (4, 8, 12) please try again.");
+                    size = Integer.parseInt(scanner.nextLine());
+                }
 
                 System.out.println("Add Meats !PLEASE SPACE WITH COMMA!:(Steak, Ham, Salami, Roast Beef, Chicken, Bacon)");
                 meats = Arrays.asList(scanner.nextLine().split(","));
 
-                System.out.println("Add Cheeses !PLEASE SPACE WITH COMMA!:(Cheddar, Swiss, American, Provolone)");
+                    System.out.println("Add Cheeses !PLEASE SPACE WITH COMMA!:(Cheddar, Swiss, American, Provolone)");
                 cheeses = Arrays.asList(scanner.nextLine().split(","));
 
                 System.out.println("Add Toppings !PLEASE SPACE WITH COMMA!:(Lettuce, Pepper, Tomato, Onion, Jalapenos, Pickles, Cucumbers, Guac, Mushrooms)");
@@ -36,7 +44,7 @@ public class Sandwich {
                 System.out.println("Add Sauces !PLEASE SPACE WITH COMMA!:(Mayo, Mustard, Ranch, Kechups, Thousand Island, Vinaigrette)");
                 sauces = Arrays.asList(scanner.nextLine().split(","));
 
-                System.out.println("Do you want it toasted:(Yes/No)");
+                System.out.println("Do you want it toasted:(Yes/Else NO)");
                 toasted = scanner.nextLine().equalsIgnoreCase("yes");
 
                 t = false;
