@@ -1,12 +1,12 @@
 # DeLI-cious Sandwich Ordering App
 
-Welcome to **DelI-cious**, a Java-based console application that allows users to create custom sandwich orders, add sides like drinks and chips, and generate a receipt. This app demonstrates basic object-oriented programming, user input handling, file writing, and control structures in Java.
+Welcome to **DelI-cious**, a Java-based console app that allows users to make custom sandwich orders, add sides like drinks and chips, and generate a receipt. This app shows basic OOP, user input handling, file writing, and control structures in Java.
 
 ---
 
 ## 🚀 Features
 
-* Intuitive text-based menu system
+* Text-based menu system
 * Build custom sandwiches with bread, meats, cheese, toppings, sauces, and size options
 * Add drinks and chips to your order
 * Checkout and generate a timestamped receipt saved to the `receipt/` directory
@@ -74,12 +74,10 @@ Total: $11.50
 
 ## 🛠️ Future Improvements
 
-* Improve input validation and error messages
-* Add price breakdown per item in receipt
-* Support multiple orders per session
-* GUI version with Swing or JavaFX
+* Could of did the bonus challenge 
+* Add price breakdown per item 
 
 ---
 
-Made with JAVA by \Preston Panom
+Made with JAVA by Preston Panom
 
