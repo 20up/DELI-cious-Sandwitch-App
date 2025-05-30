@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        OrderScreen main = new OrderScreen();
-        main.Start();
+        HomeScreen main = new HomeScreen();
+        main.Start(); //goes to start method
     }
 }

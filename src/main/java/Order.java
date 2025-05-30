@@ -125,8 +125,10 @@ public class Order {
     }
 
     private void saveReceipt(){
+        //makes file with this format yyyy-mm-dd_h-mm_a.txt
         String filename = "receipt/" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_h-mm_a")) + ".txt";
         try(PrintWriter writer = new PrintWriter(new FileWriter(filename))){
+            //loops through SANDWICH and prints it in the file created
             for(Sandwich s : SANDWICH){
                 writer.println(s);
             }

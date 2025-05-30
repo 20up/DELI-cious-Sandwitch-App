@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class OrderScreen {
+public class HomeScreen {
 
     static Scanner scanner = new Scanner(System.in);
 
